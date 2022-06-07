@@ -1,0 +1,23 @@
+PODS:
+  - KYNaviView (0.3.2)
+  - KYWebController (0.1.2):
+    - KYNaviView (~> 0.3.2)
+
+DEPENDENCIES:
+  - KYWebController (from `../`)
+
+SPEC REPOS:
+  https://gitee.com/kangpp/kycomponent-spec.git:
+    - KYNaviView
+
+EXTERNAL SOURCES:
+  KYWebController:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  KYNaviView: e9eafa30b37a438310623108a19a7d548d087f1f
+  KYWebController: be3b54464af72c79b89833e87fff282dd0fe42f3
+
+PODFILE CHECKSUM: 387592b35dd0f773f6496b5da2b1d96cbd469d82
+
+COCOAPODS: 1.11.0

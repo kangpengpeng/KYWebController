@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>jsApis</key>
+	<array>
+		<dict>
+			<key>jsApi</key>
+			<string>testHandler1</string>
+			<key>handleClass</key>
+			<string>KYJsApiTest</string>
+		</dict>
+		<dict>
+			<key>jsApi</key>
+			<string>testHandler2</string>
+			<key>handleClass</key>
+			<string>KYJsApiTestUnrealized</string>
+		</dict>
+	</array>
+</dict>
+</plist>

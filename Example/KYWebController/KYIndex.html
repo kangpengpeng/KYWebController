@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OC与JS交互</title>
+    <script>
+        
+        // 正常情况的 jsApi 使用
+        function jsCallOC(){
+            // jsCallOC 方法是在OC中通过context上下文注入的block函数
+            //jsCallOC('OC你好');
+            KYJSBridge_call('testHandler1', {'name': 'kangpp'}, function (result) {
+                //alert(JSON.stringify(result));
+                alert(result.key_01 + "\n" + result.key_02 + "\n" + result.key_03);
+                var flag = confirm(result.key_01 + "\n" + result.key_02 + "\n" + result.key_03);
+                if (flag) {
+                    alert("用户确定了");
+                }
+            });
+        };
+        
+        // 一个输入框弹窗
+        function showInputAlert() {
+            var result = prompt("请输入:");
+            alert(result);
+        };
+    
+        function openAlbumImage(){
+            getImage();
+            kcObject.letJSImage('123');
+            alert(kcObject.getSum(10,20));
+        };
+
+        function ocCallJs(params) {
+            alert(params.key);
+            var resObj = {
+                key: 'abcd'
+            };
+            return resObj;
+            return "js方法的返回值";
+        }
+    
+    </script>
+</head>
+<body>
+    
+    <input type="button" value="JS 调用 OC 方法 (jsApi已实现)" onclick="jsCallOC()" /> <br />
+    
+    <button type="button" onclick="showInputAlert()"> 一个输入框弹窗 </button> <br/>
+    
+    <a href="https://www.baidu.com" target="_blank">href 方式跳转一个百度🔗链接，处理兼容target="_blank"</a> <br/>
+    
+    <input accept='image/*' type='file' value="打开相机/相册"> <br/>
+    
+        
+    <input accept='file/*' type='file' value="打开文件夹"> <br/>
+        
+    <div id="tz_image"></div>
+
+    
+        
+</body>
+</html>
+

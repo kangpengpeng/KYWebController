@@ -1,0 +1,42 @@
+desc 'ManagerLib 该航道是私有库维护更新快速上传工具'
+lane :ManagerLib do |options|
+
+# 版本tag
+tagName = options[:tag]
+# spec 文件名
+targetSpecName = options[:spec]
+# 提交记录描述
+commitMsg = options[:commit]
+
+# 1. pod install
+cocoapods(
+clean: true,
+podfile: "./Example/Podfile"
+)
+
+# 2. 上传文件
+git_add(path: ".")
+git_commit(path: ".", message: "#{commitMsg}")
+push_to_git_remote
+
+# 验证tag是否存在,如果存在, 应该删除本地标签和远程标签
+#if 判断标签是否存在
+#    执行删除本地/远程标签
+#end
+if git_tag_exists(tag: tagName)
+    UI.message("发现tag:#{tagName} 已经存在, 即将执行, 删除动作 🚀")
+    delete_git_tag(tag:tagName)
+    # 或者使用 delete_git_tag(tag:tagName, isDL:true, isDR:true)
+end
+
+# 3. 打标签 git tag 并上传 git push --tags
+add_git_tag(
+tag: tagName
+)
+push_git_tags
+
+# 4. spec 文件验证 pod spec lint
+pod_lib_lint(allow_warnings: true, sources: ["https://gitee.com/kangpp/kycomponent-spec.git"])
+pod_push(path: "#{targetSpecName}.podspec", repo: "KYComponent", sources: ["https://gitee.com/kangpp/kycomponent-spec.git"], allow_warnings: true)
+
+end

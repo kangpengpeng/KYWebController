@@ -1,0 +1,15 @@
+#source 'https://github.com/CocoaPods/Specs.git'
+
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'KYWebController_Example' do
+  pod 'KYWebController', :path => '../'
+
+  target 'KYWebController_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
