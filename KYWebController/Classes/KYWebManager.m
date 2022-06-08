@@ -36,6 +36,7 @@
     }
     WKWebViewConfiguration *webConfig = [self getWebConfig];
     self.webView = [[WKWebView alloc] initWithFrame:frame configuration:webConfig];
+    self.webView.backgroundColor = [UIColor whiteColor];
     self.webView.navigationDelegate = self;
     self.webView.UIDelegate = self;
     [self addWebObserver];

@@ -27,6 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     //self.title = @"自定义的web加载及交互容器";
     [self loadWebView:self.urlString];
 }

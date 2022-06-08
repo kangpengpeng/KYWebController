@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'KYWebController'
-  s.version          = '0.1.2'
+  s.version          = '0.1.3'
   s.summary          = 'WKWebView 加载及交互组件'
 
 # This description is used to generate tags and improve search results.
@@ -39,4 +39,5 @@ Pod::Spec.new do |s|
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   s.dependency 'KYNaviView', '~> 0.3.2'
+  s.pod_target_xcconfig = { 'VALID_ARCHS' => 'x86_64 armv7 arm64' }
 end

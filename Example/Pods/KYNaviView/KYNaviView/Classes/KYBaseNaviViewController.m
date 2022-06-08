@@ -326,13 +326,13 @@
 }
 /// 计算self.view.y
 - (CGFloat)calculateControllerViewOriginY {
+    // 如果设置了顶部偏移距离，将不再考虑导航栏是否隐藏
+    // 如果调用者未设置顶部偏移，则根据导航栏是否隐藏设置 self.view.y
+    if (_hasSetEdgesTop) return self.edgesTop;
     // 如果设置了隐藏导航，顶部偏移距离设置为0
     if (self.naviView.isHidden) {
         return 0;
     }
-    // 如果设置了顶部偏移距离，将不再考虑导航栏是否隐藏
-    // 如果调用者未设置顶部偏移，则根据导航栏是否隐藏设置 self.view.y
-    if (_hasSetEdgesTop) return self.edgesTop;
     CGFloat statusAndNaviHeight = [KYNaviTool getStatusBarHeight] + [self getNavigationBarHeight];
     return self.naviView.isHidden ? 0 : statusAndNaviHeight;
 }
