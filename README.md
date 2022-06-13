@@ -20,7 +20,6 @@ KYWebManager 是 WKWebView 的加载管理类
 3. 将2中的 "jsApiHandel" 和 对应原生实现的类注册到 KYJsApi.plist 文件中
 4. 原生实现类，需要遵守 KYJsApiHandlerProtocol 协议并实现协议的方法 jsApiHandler:context:callback:
 5. callback 就是处理完成后，JS 收到的回调信息
-6. 当前版本，callback 仅支持一次回调，一经使用将会被销毁，再次回调时，JS 收不到
 
 ## Requirements
 
@@ -30,7 +29,7 @@ KYWebController is available through [CocoaPods](https://cocoapods.org). To inst
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'KYWebController', '~> 0.1.3'
+pod 'KYWebController', '~> 0.1.4'
 ```
 
 ## Author

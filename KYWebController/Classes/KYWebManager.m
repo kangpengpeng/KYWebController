@@ -15,12 +15,16 @@
 // H5 alert 弹窗确定和取消按钮默认文案
 #define KY_ALERT_CONFIRM_TEXT   @"确定"
 #define KY_ALERT_CANCEL_TEXT    @"取消"
+/// webview.scrollView 背景颜色
+#define WEB_CONTENT_BACKGROUND_COLOR    [UIColor colorWithRed:243/255.0 green:243/255.0 blue:243/255.0 alpha:1]
 
 @interface KYWebManager() <WKUIDelegate, WKScriptMessageHandler, WKNavigationDelegate>
 @property (nonatomic, strong) WKWebView *webView;
 @property (nonatomic, strong) NSArray *jsApiArr;
 @property (nonatomic, strong) KYJsContext *jsContext;
 //@property (nonatomic, weak) KYWebViewController *targetViewController;
+// webview 提供者展示 label
+@property (nonatomic, strong) UILabel *webProviderLabel;
 @end
 
 @implementation KYWebManager
@@ -37,8 +41,20 @@
     WKWebViewConfiguration *webConfig = [self getWebConfig];
     self.webView = [[WKWebView alloc] initWithFrame:frame configuration:webConfig];
     self.webView.backgroundColor = [UIColor whiteColor];
+    self.webView.opaque = NO;
+    self.webView.scrollView.backgroundColor = [UIColor clearColor];
     self.webView.navigationDelegate = self;
     self.webView.UIDelegate = self;
+    
+    UIView *webBgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+    webBgView.backgroundColor = WEB_CONTENT_BACKGROUND_COLOR;
+    self.webProviderLabel.frame = CGRectMake(50, 0, frame.size.width-100, 30);
+    //self.webProviderLabel.text = @"此网页由 www.baidu.com 提供";
+    self.webProviderLabel.hidden = YES;
+    [webBgView addSubview:self.webProviderLabel];
+    [self.webView addSubview:webBgView];
+    [self.webView sendSubviewToBack:webBgView];
+    
     [self addWebObserver];
     return self.webView;
 }
@@ -54,6 +70,7 @@
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:request];
+    self.webProviderLabel.text = [NSString stringWithFormat:@"此网页由 %@ 提供", url.host];
 }
 
 /// 加载一个webview
@@ -63,6 +80,13 @@
     [self getWebView:frame];
     [self loadWebView:urlString];
     return self.webView;
+}
+
+/// 是否显示此网页提供者（此网页由xxx提供）
+/// @param isShow YES-显示，NO-不显示
+/// 默认不显示，如有需要请手动开启
+- (void)showProvider:(BOOL)isShow {
+    [self.webProviderLabel setHidden:!isShow];
 }
 
 /// 销毁 webView，因为需要移除监听及ScriptMessageHandler
@@ -100,9 +124,39 @@
     }];
 }
 
+#pragma init
+- (instancetype)init {
+    if (self = [super init]) {
+        [self addNotify];
+    }
+    return self;
+}
+/// 添加通知
+- (void)addNotify {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardwillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+/// 移除通知
+- (void)removeNotify {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+/// 键盘关闭
+- (void)keyboardwillHide:(NSNotification *)notification {
+    NSLog(@"键盘关闭");
+    // 修复 底部input输入框收起键盘后，页面不能恢复的问题
+    NSDictionary *userInfo = [notification userInfo];
+    // 获取键盘关闭动画时长
+    double keyboardAnimationDuration = [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    NSString *jsStr = [NSString stringWithFormat:@"setTimeout(() => {const scrollHeight = document.documentElement.scrollTop || document.body.scrollTop || 0;window.scrollTo(0, Math.max(scrollHeight - 1, 0));}, %f);", keyboardAnimationDuration];
+    [self.webView evaluateJavaScript:jsStr completionHandler:^(id _Nullable result, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"webview键盘关闭处理 %@", error);
+        }
+    }];
+}
 #pragma mark: - delloc
 - (void)dealloc {
-    NSLog(@"KYWebManager delloc");
+    NSLog(@"%s", __func__);
+    [self removeNotify];
 }
 
 #pragma 私有方法
@@ -457,7 +511,16 @@
 }
 
 #pragma mark: - 属性懒加载
-
+- (UILabel *)webProviderLabel {
+    if (!_webProviderLabel) {
+        _webProviderLabel = [[UILabel alloc] init];
+        _webProviderLabel.backgroundColor = [UIColor clearColor];
+        _webProviderLabel.textColor = [UIColor colorWithRed:184/255.0 green:184/255.0 blue:184/255.0 alpha:1];
+        _webProviderLabel.textAlignment = NSTextAlignmentCenter;
+        _webProviderLabel.font = [UIFont systemFontOfSize:12];
+    }
+    return _webProviderLabel;
+}
 
 
 @end

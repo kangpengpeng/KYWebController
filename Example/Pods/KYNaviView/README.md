@@ -7,21 +7,23 @@
 
 ## Example
 
-自定义的导航栏控制器
-使用时请继承 KYBaseNaviViewController
-具体暴露的方法，请查看 KYBaseNaviViewController.h 文件
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+## Requirements
 
 ## Installation
 
 KYNaviView is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
-```
-pod 'KYNaviView', '~> 0.3.2'
+```ruby
+pod 'KYNaviView'
 ```
 
 ## Author
 
-kangpengpeng, 353327533@qq.com, kangpp@163.com
+kangpengpeng, 353327533@qq.com
 
+## License
+
+KYNaviView is available under the MIT license. See the LICENSE file for more info.

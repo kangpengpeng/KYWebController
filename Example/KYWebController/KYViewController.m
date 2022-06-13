@@ -25,11 +25,13 @@
     NSString *h5FilePath = [[NSBundle mainBundle] pathForResource:@"KYIndex.html" ofType:nil];
     //KYWebViewController *webVC = [[KYWebViewController alloc] init];
     KYMyWebViewController *webVC = [[KYMyWebViewController alloc] init];
-
-    // @"https://www.baidu.com"
-    [webVC setWebViewURLString:h5FilePath];
+    
+    //@"https://www.dddbaidu.com" // https://www.hao123.com/?src=from_pc_logon
+    [webVC setWebViewURLString:@"https://www.hao123.com/?src=from_pc_logon"];
     [webVC setNaviTitle:@"自定义的web加载及交互容器"];
     [webVC hiddenNaviView:NO];
+    // 是否显示网页提供者，默认不显示
+    [webVC showProvider:YES];
     [self.navigationController pushViewController:webVC animated:YES];
 }
 

@@ -1,14 +1,13 @@
 PODS:
   - KYNaviView (0.3.2)
-  - KYWebController (0.1.2):
+  - KYWebController (0.1.3):
     - KYNaviView (~> 0.3.2)
 
 DEPENDENCIES:
-  - KYNaviView (~> 0.3.2)
   - KYWebController (from `../`)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://gitee.com/kangpp/kycomponent-spec.git:
     - KYNaviView
 
 EXTERNAL SOURCES:
@@ -16,9 +15,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  KYNaviView: 0643bb200236da1a0c301e3b90c6e9ca1626e319
-  KYWebController: e268fd21ff26ae2ca248ab05fd22af3db29b30a5
+  KYNaviView: e9eafa30b37a438310623108a19a7d548d087f1f
+  KYWebController: 58eaa6786447c656505b4720d2650409eb3c1754
 
-PODFILE CHECKSUM: 9fcf4750b6a17aef3934f7b6439abda9085567fd
+PODFILE CHECKSUM: 40d28f7a8a493f9dcbfbaa035b9c97924165f3fb
 
 COCOAPODS: 1.11.0

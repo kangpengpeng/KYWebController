@@ -8,9 +8,10 @@
 #import "KYWebViewController.h"
 #import "KYWebLoadingProgressLine.h"
 
+/// 进度条高度
 #define PROGRESS_LINE_HEIGHT    2
 
-@interface KYWebViewController ()<KYWebManagerDelegate>
+@interface KYWebViewController ()
 @property (nonatomic, strong) KYWebLoadingProgressLine *loadingProgressLine;
 @property (nonatomic, strong) WKWebView *webView;
 @property (nonatomic, copy) NSString *urlString;
@@ -27,8 +28,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
     //self.title = @"自定义的web加载及交互容器";
+    self.view.backgroundColor = [UIColor whiteColor];
     [self loadWebView:self.urlString];
 }
 
@@ -43,7 +44,6 @@
     WKWebView *webView = [self.webManager loadWebView:urlString withFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     self.webView = webView;
     self.webManager.delegate = self;
-
     if ([self isHiddenNaviView] == NO) {
         if (@available(iOS 11.0, *)) {
             webView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -87,6 +87,13 @@
     [self.loadingProgressLine setFrame:frame];
 }
 
+/// 是否显示此网页提供者（此网页由xxx提供）
+/// @param isShow YES-显示，NO-不显示
+/// 默认不显示，如有需要请手动开启
+- (void)showProvider:(BOOL)isShow {
+    [self.webManager showProvider:isShow];
+}
+
 /// 重写返回按钮响应，执行webview逐级返回
 - (void)goback {
     if ([self.webView canGoBack]) {
@@ -124,6 +131,8 @@
     }
     return _loadingProgressLine;
 }
+#pragma mark: - 属性懒加载
+
 
 #pragma mark: - 释放时机
 - (void)dealloc {

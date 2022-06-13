@@ -272,7 +272,7 @@
 				ORGANIZATIONNAME = kangpengpeng;
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
-						DevelopmentTeam = 257G235YFR;
+						DevelopmentTeam = PXKRS4XWUT;
 					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
@@ -527,12 +527,12 @@
 			baseConfigurationReference = 2170D1A1E02027ABCADCE9E1 /* Pods-KYWebController_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 257G235YFR;
+				DEVELOPMENT_TEAM = PXKRS4XWUT;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KYWebController/KYWebController-Prefix.pch";
 				INFOPLIST_FILE = "KYWebController/KYWebController-Info.plist";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.KYWebController-Examplewda";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
@@ -544,12 +544,12 @@
 			baseConfigurationReference = 7DE94C112EAAEACF835AD47F /* Pods-KYWebController_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 257G235YFR;
+				DEVELOPMENT_TEAM = PXKRS4XWUT;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KYWebController/KYWebController-Prefix.pch";
 				INFOPLIST_FILE = "KYWebController/KYWebController-Info.plist";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.KYWebController-Examplewda";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;

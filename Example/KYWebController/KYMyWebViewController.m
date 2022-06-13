@@ -17,7 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     __weak typeof(self) weakSelf = self;
     self.ky_didTouchTitle = ^(KYNaviContext * _Nonnull context) {
         NSLog(@"开始调用 js 函数");
@@ -28,5 +27,9 @@
     };
 }
 
+#pragma mark: - KYWebManagerDelegate
+- (void)ky_webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error {
+    NSLog(@"页面加载失败");
+}
 
 @end

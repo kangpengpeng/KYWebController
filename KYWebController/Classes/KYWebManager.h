@@ -33,10 +33,14 @@ typedef void(^KYWebViewLoadingProgress)(CGFloat progress);
 /// @param frame 坐标位置
 - (WKWebView *)loadWebView:(NSString *)urlString withFrame:(CGRect)frame;
 
+/// 是否显示此网页提供者（此网页由xxx提供）
+/// @param isShow YES-显示，NO-不显示
+/// 默认不显示，如有需要请手动开启
+- (void)showProvider:(BOOL)isShow;
+
 /// 销毁 webView，因为需要移除监听及ScriptMessageHandler
 /// 建议调用时机，应该在控制器退出后
 - (void)destroy;
-
 
 /// 调用 JS 方法
 /// @param jsFunc js 方法名

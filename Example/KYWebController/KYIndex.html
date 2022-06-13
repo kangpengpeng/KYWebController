@@ -38,27 +38,64 @@
             };
             return resObj;
             return "js方法的返回值";
-        }
+        };
     
+
     </script>
 </head>
-<body>
-    
-    <input type="button" value="JS 调用 OC 方法 (jsApi已实现)" onclick="jsCallOC()" /> <br />
-    
-    <button type="button" onclick="showInputAlert()"> 一个输入框弹窗 </button> <br/>
-    
-    <a href="https://www.baidu.com" target="_blank">href 方式跳转一个百度🔗链接，处理兼容target="_blank"</a> <br/>
-    
-    <input accept='image/*' type='file' value="打开相机/相册"> <br/>
-    
-        
-    <input accept='file/*' type='file' value="打开文件夹"> <br/>
-        
-    <div id="tz_image"></div>
 
-    
+<body>
+    <div style="background-color:red">
         
+        <input type="button" value="JS 调用 OC 方法 (jsApi已实现)" onclick="jsCallOC()" /> <br />
+        
+        <button type="button" onclick="showInputAlert()"> 一个输入框弹窗 </button> <br/>
+        
+        <a href="https://www.baidu.com" target="_blank">href 方式跳转一个百度🔗链接，处理兼容target="_blank"</a> <br/>
+        
+        <input accept='image/*' type='file' value="打开相机/相册"> <br/>
+        
+            
+        <input accept='file/*' type='file' value="打开文件夹"> <br/>
+            
+        <div id="tz_image"></div> <br/>
+        
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        
+        <input
+            type="number"
+            minlength="6"
+            maxlenght="19"
+            autofocus="autofocus"
+            @blur="recover"
+            @input="oninputcardno"
+            placeholder="测试键盘收起，页面回弹"
+            v-model="cardInfo.cardNo"
+            class="content-item-text"/>
+        <br/>
+
+        <button>点击事件</button>
+        <br/>
+
+    </div>
 </body>
 </html>
 

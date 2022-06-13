@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface KYWebViewController : KYBaseNaviViewController
+@interface KYWebViewController : KYBaseNaviViewController <KYWebManagerDelegate>
 
 @property (nonatomic, strong) KYWebManager *webManager;
 
@@ -33,6 +33,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// 设置 webView 加载进度条高度
 /// @param height 进度条高度
 - (void)setLoadingProgressHeight:(NSUInteger)height;
+
+/// 是否显示此网页提供者（此网页由xxx提供）
+/// @param isShow YES-显示，NO-不显示
+/// 默认不显示，如有需要请手动开启
+- (void)showProvider:(BOOL)isShow;
 
 @end
 

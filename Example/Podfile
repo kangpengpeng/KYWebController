@@ -6,8 +6,7 @@ platform :ios, '9.0'
 
 target 'KYWebController_Example' do
   pod 'KYWebController', :path => '../'
-  pod 'KYNaviView', '~> 0.3.2'
-  
+
   target 'KYWebController_Tests' do
     inherit! :search_paths
 
